@@ -32,6 +32,10 @@
     background: white;
     border: 1px solid #ccc;
     width: 280px;
+    display: none;
+}
+#info-panel.open{
+    display: block;
 }
 #info-panel label{
     font-size: .8rem;
