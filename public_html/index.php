@@ -17,12 +17,15 @@
     </div>
  
     <div id="dates">
-        <div class="date-block">
-            <div class="date">20</div>
-            <div class="events">
-                
+        <?php foreach ($variable as $key => $value): ?>
+            <div class="date-block">
+            
+                <div class="date">20</div>
+                <div class="events">
+                    
+                </div>
             </div>
-        </div>
+        <?php endforeach ?>
     </div>
 </div>
 
