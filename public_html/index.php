@@ -6,7 +6,7 @@
         <?= date('Y')?>/<?= date('m')?>
     </div>
 
-    <div id="days">
+    <div id="days" class="clearfix">
         <div class="day">SUN</div>
         <div class="day">MON</div>
         <div class="day">TUE</div>
@@ -16,9 +16,9 @@
         <div class="day">SAT</div>
     </div>
  
-    <div id="dates">
+    <div id="dates" class="clearfix">
         <?php foreach ($dates as $key => $date): ?>
-            <div class="date-block">
+            <div class="date-block <?=(is_null($date))? 'empty' : ''?>">
             
                 <div class="date"><?= $date ?></div>
                 <div class="events">
