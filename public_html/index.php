@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<div id="info-panel">
+<div id="info-panel" class="update">
     <div class="close">x</div>
     <div class="title">
         <label>event</label>
@@ -52,9 +52,8 @@
     <div class="description">
         <label>description</label><br>
         <textarea name="description" id="description" ></textarea>
-        <div id="description" contenteditable="true"></div>
     </div>
-    <div class="buttons">
+    <div class="buttons clearfix">
         <button class="create">create</button>
         <button class="update">update</button>
         <button class="cancel">cancel</button>

@@ -18,6 +18,7 @@
     border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;
     height: 15vh;
+    padding: 4px;
 }
 .date-block.empty {
     background-color: #eee;
@@ -30,6 +31,7 @@
     right: 50px;
     background: white;
     border: 1px solid #ccc;
+    width: 280px;
 }
 #info-panel label{
     font-size: .8rem;
@@ -58,3 +60,37 @@
     top: 10px;
     cursor: pointer;
 }
+#info-panel button{
+    display: none;
+}
+#info-panel.new button.create,
+#info-panel.new button.cancel {
+    float: left;
+    display: block;
+    width: 50%;
+}
+#info-panel.update button.update,
+#info-panel.update button.cancel,
+#info-panel.update button.delete {
+    display: inline-block;
+    float: left;
+    width: 50%;
+}
+#info-panel.update button.delete{
+    width: 100%;
+    background: #c21717;
+}
+#info-panel button{
+    display: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+}
+#info-panel.new button.create,
+#info-panel.update button.update {
+    background: #74be00;
+}
+
+
+
