@@ -1,6 +1,9 @@
 <?php 
 
-
+$dates = [];
+for ($i=1; $i<=31;$i++){
+    $dates[] = $i;
+}
 // include('../db.php');
 // echo 'abc';
 
@@ -21,6 +24,6 @@
 // ?>
 
 
-// <script>
-//     var todos = <?= json_encode($todos,JSON_NUMERIC_CHECK) ?>
-// </script>
+<!-- <script>
+var todos = <?= json_encode($todos,JSON_NUMERIC_CHECK) ?>
+</script> -->
