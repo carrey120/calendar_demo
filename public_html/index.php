@@ -15,12 +15,12 @@
         <div class="day">FRI</div>
         <div class="day">SAT</div>
     </div>
-
+ 
     <div id="dates">
         <div class="date-block">
             <div class="date">20</div>
             <div class="events">
-                
+
             </div>
         </div>
     </div>
