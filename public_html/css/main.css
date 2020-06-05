@@ -22,3 +22,39 @@
 .date-block.empty {
     background-color: #eee;
 }
+
+/* info-panel  */
+#info-panel{
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    background: white;
+    border: 1px solid #ccc;
+}
+#info-panel label{
+    font-size: .8rem;
+    color: #aaa;
+}
+#info-panel .title, #info-panel .time-picker {
+    border-bottom: 1px solid #ccc;
+}
+
+#info-panel .title, 
+#info-panel .time-picker,
+#info-panel .description{
+    padding: 10px;
+}
+
+.selected-date {
+    text-align: center;
+    font-size: 1.4rem;
+}
+#description{
+    width: 100%;
+}
+#info-panel .close {
+    position: relative;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
