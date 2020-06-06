@@ -1,7 +1,9 @@
 $(document).ready(function(){
     var panel = {
         el: '#info-panel',
+        seletedDateBlock: null,
         open: function(isNew, e){
+
             $(panel.el).addClass('open').css({
                 top: e.pageY+'px',
                 left: e.pageX+'px',
@@ -9,10 +11,15 @@ $(document).ready(function(){
 
             panel.updateDate(e);
 
-            if(isNew)
-            $(panel.el).addClass('new').removeClass('update');
-            else
-            $(panel.el).addClass('update').removeClass('new');
+            if(isNew){
+                $(panel.el).addClass('new').removeClass('update');
+                panel.seletedDateBlock = $(e.currentTarget);
+            }
+            else{
+                $(panel.el).addClass('update').removeClass('new');
+                panel.seletedDateBlock = $(e.currentTarget).closest('.date-block');
+            }
+            
         },
         close: function(){
             $(panel.el).removeClass('open');
@@ -59,6 +66,19 @@ $(document).ready(function(){
         $.post('event/create.php'.data, function(data, textStatus, xhr){
             // insert into events
         });  
+
+        var source = $('#event-template').html();
+        var eventTemplate = Handlebars.compile(source);
+        var event = {
+            id:1,
+            title:'title',
+            start_time:'10:20'
+        };
+        var eventUI = eventTemplate(event);
+
+        panel.seletedDateBlock.find('.events').append(eventUI);
+        panel.close();
+
     }
     if ($(this).is('.update')){
         

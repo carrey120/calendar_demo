@@ -1,5 +1,6 @@
 <?php include('header.php') ?>
 <?php include('data.php') ?>
+<?php include('template.php') ?>
 
 <div id="calendar" data-year="<?=date('Y')?>" data-month="<?= date('m')?>">
     <div id="header">
@@ -22,7 +23,7 @@
             
                 <div class="date"><?= $date ?></div>
                 <div class="events">
-                    <div class="event clearfix">
+                    <div class="event clearfix" data-id="">
                         <div class="title">title</div>
                         <div class="from">10:00</div>
                     </div>

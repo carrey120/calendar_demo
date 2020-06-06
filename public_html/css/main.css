@@ -28,6 +28,7 @@
     color: white;
     padding: 0 6px;
     border-radius: 12px;
+    margin-bottom: 2px;
 }
 .event .title{
     float: left;
