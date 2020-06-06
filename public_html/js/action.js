@@ -29,6 +29,11 @@ $(document).ready(function(){
 
             $(panel.el).find('.month').text(month);
             $(panel.el).find('.date').text(date);
+            $(panel.el).find('[name="month"]').val(month);
+            $(panel.el).find('[name="date"]').val(date);
+
+            // console.log($(panel.el).find('[name="month"]').val());
+            // console.log($(panel.el).find('[name="date"]').val());
         },
     };
 
@@ -44,10 +49,16 @@ $(document).ready(function(){
 
 
 
-   $('#info-panel')
+   $(panel.el)
    .on('click', 'button', function(e){
     if ($(this).is('.create')){
+        // collect data 
+        var data = $(panel.el).find('form').serialize();
 
+        // AJAX call - create API 
+        $.post('event/create.php'.data, function(data, textStatus, xhr){
+            // insert into events
+        });  
     }
     if ($(this).is('.update')){
         
