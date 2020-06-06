@@ -22,7 +22,10 @@
             
                 <div class="date"><?= $date ?></div>
                 <div class="events">
-                    
+                    <div class="event clearfix">
+                        <div class="title">title</div>
+                        <div class="from">10:00</div>
+                    </div>
                 </div>
             </div>
         <?php endforeach ?>

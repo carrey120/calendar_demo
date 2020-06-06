@@ -23,12 +23,22 @@
 .date-block.empty {
     background-color: #eee;
 }
+.event {
+    background: orange;
+    color: white;
+    padding: 0 6px;
+    border-radius: 12px;
+}
+.event .title{
+    float: left;
+}
+.event .from {
+    float: right;
+}
 
 /* info-panel  */
 #info-panel{
     position: fixed;
-    top: 50px;
-    right: 50px;
     background: white;
     border: 1px solid #ccc;
     width: 280px;
