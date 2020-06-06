@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
 <?php include('data.php') ?>
 
-<div id="calendar">
+<div id="calendar" data-year="<?=date('Y')?>" data-month="<?= date('m')?>">
     <div id="header">
         <?= date('Y')?>/<?= date('m')?>
     </div>
@@ -18,7 +18,7 @@
  
     <div id="dates" class="clearfix">
         <?php foreach ($dates as $key => $date): ?>
-            <div class="date-block <?=(is_null($date))? 'empty' : ''?>">
+            <div class="date-block <?=(is_null($date))? 'empty' : ''?>" data-date="<?= $date ?>">
             
                 <div class="date"><?= $date ?></div>
                 <div class="events">
@@ -40,8 +40,8 @@
     </div>
     <div class="time-picker">
         <div class="selected-date">
-            <span class="month">10</span>/
-            <span class="date">20</span>
+            <span class="month"></span>/
+            <span class="date"></span>
         </div>
         <div class="from">
             <label for="from">from</label><br>

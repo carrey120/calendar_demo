@@ -7,6 +7,8 @@ $(document).ready(function(){
                 left: e.pageX+'px',
             }).find('.title [contenteditable]').focus();
 
+            panel.updateDate(e);
+
             if(isNew)
             $(panel.el).addClass('new').removeClass('update');
             else
@@ -14,6 +16,19 @@ $(document).ready(function(){
         },
         close: function(){
             $(panel.el).removeClass('open');
+        },
+        updateDate: function(e){
+            // get date from .date-block 
+            if ($(e.currentTarget).is('.date-block'))
+                var date = $(e.currentTarget).data('date');
+            else
+                var date = $(e.currentTarget).closest('.date-block').data('date');
+            
+            // get month from calendar 
+            var month = $('#calendar').data('month');
+
+            $(panel.el).find('.month').text(month);
+            $(panel.el).find('.date').text(date);
         },
     };
 
