@@ -1,25 +1,32 @@
 $(document).ready(function(){
     var panel = {
         el: '#info-panel',
-        seletedDateBlock: null,
-        open: function(isNew, e){
+        selectedDateBlock: null,
+        init: function(e) {
+            panel.clear();
 
+            panel.updateDate(e);
+        },
+        clear: function() {
+            $(panel.el).find('input').val('');
+            $(panel.el).find('textarea').val('');
+        },
+        open: function(isNew, e){
+            panel.init(e);
             $(panel.el).addClass('open').css({
                 top: e.pageY+'px',
                 left: e.pageX+'px',
             }).find('.title [contenteditable]').focus();
 
-            panel.updateDate(e);
-
             if(isNew){
                 $(panel.el).addClass('new').removeClass('update');
-                panel.seletedDateBlock = $(e.currentTarget);
+                panel.selectedDateBlock = $(e.currentTarget);
             }
             else{
                 $(panel.el).addClass('update').removeClass('new');
-                panel.seletedDateBlock = $(e.currentTarget).closest('.date-block');
+                panel.selectedDateBlock = $(e.currentTarget).closest('.date-block');
             }
-            
+             
         },
         close: function(){
             $(panel.el).removeClass('open');
@@ -51,10 +58,11 @@ $(document).ready(function(){
     }).on('dblclick', '.event', function(e){
         e.stopPropagation();
         panel.open(false, e);
+
+        panel.selectedEvent = $(e.currentTarget);
+
+        var id = $(this).data('id');
    });
-
-
-
 
    $(panel.el)
    .on('click', 'button', function(e){
@@ -63,9 +71,9 @@ $(document).ready(function(){
         var data = $(panel.el).find('form').serialize();
 
         // AJAX call - create API 
-        $.post('event/create.php'.data, function(data, textStatus, xhr){
+        // $.post('event/create.php'.data, function(data, textStatus, xhr){
             // insert into events
-        });  
+        // });  
 
         var source = $('#event-template').html();
         var eventTemplate = Handlebars.compile(source);
@@ -76,7 +84,8 @@ $(document).ready(function(){
         };
         var eventUI = eventTemplate(event);
 
-        panel.seletedDateBlock.find('.events').append(eventUI);
+        // todo: insert with from time order
+        panel.selectedDateBlock.find('.events').append(eventUI);
         panel.close();
 
     }
@@ -87,7 +96,9 @@ $(document).ready(function(){
         panel.close();
     }
     if ($(this).is('.delete')){
-        
+        var id = panel.selectedEvent.data('id');
+        panel.selectedEvent.remove();
+        panel.close();
     }
 
    })
