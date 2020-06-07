@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    var source = $('#event-template').html();
+    var eventTemplate = Handlebars.compile(source);
+
     var panel = {
         el: '#info-panel',
         selectedDateBlock: null,
@@ -38,11 +41,13 @@ $(document).ready(function(){
             else
                 var date = $(e.currentTarget).closest('.date-block').data('date');
             
-            // get month from calendar 
+            // get month and year from calendar 
+            var year = $('#calendar').data('year');
             var month = $('#calendar').data('month');
 
             $(panel.el).find('.month').text(month);
             $(panel.el).find('.date').text(date);
+            $(panel.el).find('[name="year"]').val(year);
             $(panel.el).find('[name="month"]').val(month);
             $(panel.el).find('[name="date"]').val(date);
 
@@ -69,24 +74,19 @@ $(document).ready(function(){
     if ($(this).is('.create')){
         // collect data 
         var data = $(panel.el).find('form').serialize();
+        // console.log(data);
 
         // AJAX call - create API 
-        // $.post('event/create.php'.data, function(data, textStatus, xhr){
-            // insert into events
-        // });  
+        $.post('event/create.php', data, function(data, textStatus, xhr){
+            
+            var eventUI = eventTemplate(data);
 
-        var source = $('#event-template').html();
-        var eventTemplate = Handlebars.compile(source);
-        var event = {
-            id:1,
-            title:'title',
-            start_time:'10:20'
-        };
-        var eventUI = eventTemplate(event);
+            // todo: insert with from time order
+            panel.selectedDateBlock.find('.events').append(eventUI);
+            panel.close();
+        });  
 
-        // todo: insert with from time order
-        panel.selectedDateBlock.find('.events').append(eventUI);
-        panel.close();
+        
 
     }
     if ($(this).is('.update')){
