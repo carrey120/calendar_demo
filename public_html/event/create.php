@@ -3,7 +3,7 @@ header('Content-Type: application/json; charset=utf-8');
 include('../../db.php');
 // echo 'abc';
 
-用PDO連接到MYsql
+// 用PDO連接到MYsql
 try {
     $pdo = new PDO("mysql:host=$db[host];dbname=$db[dbname];port=$db[port];charset=$db[charset]",
     $db['username'], $db['password']);
@@ -13,8 +13,8 @@ try {
 }
 
 // ASC = 递增排序
-$sql = 'INSERT INTO events (title, `year`, `month`, `date`, start_time, end_time, description)
-        VALUES (:title, :`year`, :`month`, :date, :start_time, :end_time, :description)';
+$sql = 'INSERT INTO events (title, year, month, `date`, start_time, end_time, description)
+        VALUES (:title, :year, :month, :date, :start_time, :end_time, :description)';
 $statement = $pdo->prepare($sql);
 $statement->bindValue(':title', $_POST['title'], PDO::PARAM_STR);
 $statement->bindValue(':year', $_POST['title'], PDO::PARAM_INT);
@@ -33,6 +33,8 @@ if ($statement->execute()){
     $statement->execute();
     $event = $statement->fetch(PDO::FETCH_ASSOC);
 
+    $event['start_time'] = substr($event['start_time'], 0, 5);
+
     echo json_encode($event);
 
 }
@@ -40,9 +42,3 @@ if ($statement->execute()){
 
 
 
-
-
-
-<!-- <script>
-var todos = <?= json_encode($todos,JSON_NUMERIC_CHECK) ?>
-</script> -->
